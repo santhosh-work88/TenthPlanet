@@ -1,0 +1,36 @@
+Requirements: 
+1. business partner mapped with mentioned 12 Account element
+2. account combination for that business partner
+3. This feature only works in Ho Chi Minh Region
+
+Procuder:
+
+STEP 1: Go to NTA AP Invoice Screen
+STEP 2: Uncheck the with PO Box in the screen
+STEP 3: Set the Account date to last or before that
+STEP 4: check if the currency is in USD
+STEP 5: Add the line invoice line and complete the invoice in the NTA AP Invoice Confirm
+STEP 6: Post the Document and run the bp history and um_masternewap_mv jobs
+STEP 7: Download the detail ap report and check if your transaction is present
+STEP 8: Run Forex RevaluationByPartner process for the Month in which the forex you wnat
+
+(Note) for example if you want to see the forex for nov month the take the curreny rate of dec month
+
+STEP 9: Two GL will be created, one for GAAP and another one for VAS
+STEP 10: Calculate to confirm if the GL is Created correctly
+
+Calculation: 
+
+generated detail ap report for a account lets say 33116 for the month of Nov and i want to verify the forex before nov(including) 
+the detail ap report shows two record for each oct and nov (totally four)
+
+STEP 1: take the outstand in vnd and add
+STEP 2: take the usd and add then multiply with dec month currency rate
+STEP 3: subtract step 1 and step 2 to get the difference for GAAP
+
+FOR VAS:
+
+STEP 1: Add all the outstanding in VND 
+STEP 2: ADD all the Outstanding in USD
+STEP 3: Multiply the USD with DEC month VAS Currency Rate
+STEP 4: Subtract step 3 with step 1 to get the difference

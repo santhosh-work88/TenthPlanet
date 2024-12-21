@@ -1,0 +1,26 @@
+BEGIN DBMS_SCHEDULER.RUN_JOB( JOB_NAME => 'HQOWCENTRA.DBMS_JOB$_605',USE_CURRENT_SESSION => FALSE); END;
+/
+select this_date,last_date,next_date,failures from dba_jobs where job = '605';
+
+
+
+BEGIN DBMS_SCHEDULER.RUN_JOB( JOB_NAME => 'HQOWCENTRA.DBMS_JOB$_6',USE_CURRENT_SESSION => FALSE); END;
+/
+select this_date,last_date,next_date,failures from dba_jobs where job = '6';
+
+
+
+BEGIN DBMS_SCHEDULER.RUN_JOB( JOB_NAME => 'HQOWCENTRA.DBMS_JOB$_6',USE_CURRENT_SESSION => FALSE); END;
+/
+select this_date,last_date,next_date,failures from dba_jobs where job = '6';
+
+
+
+BEGIN DBMS_SCHEDULER.RUN_JOB( JOB_NAME => 'HQOWCENTRA.DBMS_JOB$_6',USE_CURRENT_SESSION => FALSE); END;
+/
+select this_date,last_date,next_date,failures from dba_jobs where job = '6';
+
+
+
+
+

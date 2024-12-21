@@ -1,0 +1,33 @@
+
+--------User and Region Access---------------------------------------
+User1-1-R1 
+User2-2-R1,R7
+User3-2-R2,R5
+User4-3-R1,R4,R7
+---------------------------> User5-3-R2,R3,R6 
+User6-4-R3,R4,R5,R6
+User7-7-R1,R2,R3,R4,R5,R6,R7
+User8-2-R1,* 
+User9-1-R8	
+--------User and PassWord---------------------------------------
+User1 - User1
+User2 - User2
+User3 - User3
+User4 - User4
+User5 - User5
+User6 - User6
+User7 - User7
+User8 - User8
+User9 - User9
+
+-----------------------Region and name and ID---------------------------------------------
+1000102	Region 1	Ho Chi Minh
+1000104	Region 2	Can Tho
+1000105	Region 3	Dong Nai
+1000107	Region 4	Nha Trang
+1000106	Region 5	Da Nang
+1000108	Region 6	Vinh
+1000103	Region 7	Ha Noi
+
+1AR12408-11301
+	1AR12409-10403

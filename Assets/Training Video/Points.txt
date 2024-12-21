@@ -1,0 +1,39 @@
+Data Entry and Check:
+
+Masters:
+--------
+Organisation (Done)
+Warehouse & Locators (Done)
+Manage Customer (Done)
+Manage Vendor	(Done)
+Manage Partner (Done)
+User (Done)
+Role (Done)
+Product (Done)
+NTA Product (Done)
+Currency
+Currency Rate (Done)
+Document Type 
+Tax Category (Done)
+Tax Rate (Done)
+Unit Of Measure (Done)
+Bank (Done)
+
+Transactions:
+-------------
+Import DMS Order
+Sales Order
+Manage DO
+AR Invoice
+AR Payment
+AR Payment Allocation
+
+Reports:
+
+Storage Detail report
+Master inventory report
+Daily sales report
+
+
+Know about:
+Production current DB jobs, schedulers, cron jobs 

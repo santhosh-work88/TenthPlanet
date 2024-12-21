@@ -1,0 +1,6 @@
+12.Indirect commercial discount report (not used)
+14.List of Commercial Discount (no document no)
+15.Outstanding commercial discount report done
+16.Summary outstanding commercial discount
+7.Individual Credit MTS
+18.Statement of Accounts
