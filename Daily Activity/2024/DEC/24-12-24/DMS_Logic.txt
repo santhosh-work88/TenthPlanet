@@ -1,0 +1,42 @@
+DMS(Distribution Management System)
+
+DMS To Compiere
+Import Promorion Order
+Import DMS Order
+Import Salesman
+Import Business partner
+
+Export
+Compiere to DMS
+
+
+1.SYN_ASN_CANCEL ---> Invoice reverse(SO completed)(for Direct Agenc channel only). 1SO32409-10324, 1AR12409-10413 Pass
+ 
+2.SYN_ASN -----> SO,Invoice,DO should completed (for Direct Agenc channel only). 1SO32409-10325, 1AR12409-10415 Fail
+
+3.SYN_SALE_ORDER_STATUS (Export sales order, DO, Invoice(Promotion Invoice) and Customer Confirmation is in completed status with delivery date.) 1AR12409-10416, 1SO32409-10326 Pass
+
+4.SYN_SALE_ORDER_DETAIL ----> so,do,invoice (both void,complete) 1AR12409-10417, 1SO32409-10327 Pass
+
+5.SYN_PO_CANCEL---> so void(not link to any invoice and DO) 1SO32409-10328 Fail
+
+6.SYN_SO---SO,Invoice,DO should completed 1SO32409-10329, 1AR12409-10419  sale_order_detail Pass
+
+7.SYN_SO_CANCEL----> invoice and related SO also revesed. 1SO32409-10330, 1AR12409-10420 Fail
+
+
+Export DMS Master Daily Scheduler in HQ
+
+SYN_Campaign
+SYN_Price
+SYN_Pricelist
+SYN_Product
+SYN_SubProposal
+
+
+export master branch scheduler 
+Syn_warehouse
+Syn_inventory
+
+export AR payment
+SYN_DISTRIBUTOR_DEBIT
