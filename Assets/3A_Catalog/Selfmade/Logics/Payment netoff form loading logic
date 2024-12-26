@@ -1,0 +1,45 @@
+C_Payment_V p
+INNER JOIN C_Currency c ON (p.C_Currency_ID=c.C_Currency_ID AND p.IsAllocated='N' AND p.Processed='Y' AND p.C_Charge_ID IS NULL  AND p.IsNTA='Y' 
+AND p.C_DocType_ID NOT IN (1000902,1000903,1000904)  AND p.UM_ATTRIBUTES_ID not in('1000025','1000125') ) 
+INNER JOIN UM_ATTRIBUTES a ON (p.UM_ATTRIBUTES_ID=a.UM_ATTRIBUTES_ID) 
+INNER JOIN C_BPartner bp ON (p.C_BPartner_ID=bp.C_BPartner_ID and bp.isActive='Y' 
+AND bp.C_BPartner_ID in ( select distinct bpg.c_bpartner_id from UM_BPartnerGroup bpg 
+INNER JOIN UM_GroupConfig gc ON (gc.UM_PartnerGroup_ID=bpg.UM_PartnerGroup_ID AND gc.IsActive='Y') 
+INNER JOIN UM_PartnerGroup pg ON (pg.UM_PartnerGroup_ID=bpg.UM_PartnerGroup_ID AND pg.IsActive='Y') 
+INNER JOIN UM_WindowMapping wm ON (wm.UM_WindowMapping_ID=gc.UM_WindowMapping_ID AND wm.isActive='Y' AND wm.AD_Form_ID=1000309 ) 
+WHERE bpg.isActive='Y'  AND bpg.um_bpgrouptype IN ('NTV','NTA') )) 
+
+payment tab loading:
+
+attributes should not be in 1000025 - NTA Unallocated Cash, 1000125 - NTA Payment Select.
+doc type should not in Bank Loan, Shareholder Loan, Shareholder Borrowing
+payment should not be allocated
+payment document status should be in complted status
+business partner shoul be active
+business partner group should and group type should be non trade vendor and NTA
+partner group should be in transaction group 
+ -----------------------------------------------------------------------------------------------
+C_Invoice_v i 
+INNER JOIN C_Currency c ON (i.C_Currency_ID=c.C_Currency_ID  AND i.IsPaid='N' AND i.Processed='Y'  AND i.IsNTA='Y' ) 
+INNER JOIN UM_ATTRIBUTES a ON (i.UM_ATTRIBUTES_ID=a.UM_ATTRIBUTES_ID) 
+INNER JOIN C_BPartner bp ON (i.C_BPartner_ID=bp.C_BPartner_ID and bp.isActive='Y' 
+AND bp.C_BPartner_ID in (select distinct bpg.c_bpartner_id from UM_BPartnerGroup bpg 
+INNER JOIN UM_GroupConfig gc ON (gc.UM_PartnerGroup_ID=bpg.UM_PartnerGroup_ID AND gc.IsActive='Y') 
+INNER JOIN UM_PartnerGroup pg ON (pg.UM_PartnerGroup_ID=bpg.UM_PartnerGroup_ID AND pg.IsActive='Y') 
+INNER JOIN UM_WindowMapping wm ON (wm.UM_WindowMapping_ID=gc.UM_WindowMapping_ID 
+AND wm.isActive='Y' AND wm.AD_Form_ID=1000309 ) WHERE bpg.isActive='Y' 
+AND bpg.um_bpgrouptype IN ('NTV','NTA')) ) 
+
+Invoice tab loading :
+
+invoice should not be paid
+invoice document status should be in complted status
+business partner should be active
+business partner group should be active
+partner group should be in transaction group
+business partner group should be in transaction group config and group type should be non trade vendor and NTA
+
+
+
+
+
