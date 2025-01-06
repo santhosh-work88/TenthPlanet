@@ -1,0 +1,63 @@
+-------------------------------
+WITH RankedData AS (
+    SELECT 
+        BP.value,
+        BP.M_PriceList_id,
+        BPL.UM_DMSLocationID,
+        BPG.um_BpGroupType,
+        (SELECT Max(c_Bpartner_Location_id) 
+         FROM c_Bpartner_Location 
+         WHERE c_Bpartner_id = BPL.C_Bpartner_id) AS Location_id,
+        (SELECT Max(M_priceList_version_id) 
+         FROM M_priceList_version 
+         WHERE m_pricelist_id = BP.m_pricelist_id) AS M_priceList_version_id,
+        ROW_NUMBER() OVER (PARTITION BY BPL.C_Bpartner_id ORDER BY BPL.created) AS RN
+    FROM 
+        c_bpartner BP
+        INNER JOIN um_BPartnerGroup BPG ON BPG.c_Bpartner_id = BP.C_bpartner_id 
+        INNER JOIN c_Bpartner_Location BPL ON BPL.C_Bpartner_id = BPG.c_Bpartner_id
+        INNER JOIN M_priceList_version plv ON BP.m_pricelist_id = plv.m_pricelist_id
+    WHERE 
+        BP.ad_org_id = 1000102
+        AND BP.UM_ISDMSCUSTOMER = 'Y'
+        AND BP.isactive = 'Y'
+        AND BPG.isactive = 'Y'
+        AND BPG.um_bpgrouptype = 'ART'
+        AND BPL.isactive = 'Y'
+        AND BPL.isshipto = 'Y' 
+        AND BPL.isbillto = 'N'
+)
+SELECT 
+    value,
+    M_PriceList_id,
+    UM_DMSLocationID,
+    um_BpGroupType,
+    Location_id,
+    M_priceList_version_id
+FROM 
+    RankedData
+WHERE 
+    RN = 1
+FETCH FIRST 1000 ROWS ONLY;
+
+
+---------------------------------------------------------
+
+select bp.value,BP.M_PriceList_id,BPL.UM_DMSLocationID,BPG.um_BpGroupType,
+(Select Max(c_Bpartner_Location_id) from c_Bpartner_Location Where c_Bpartner_id=BPL.C_Bpartner_id)as Location_id,
+(Select Max(M_priceList_version_id) from M_priceList_version where m_pricelist_id=bp.m_pricelist_id) as M_priceList_version_id
+--ROW_NUMBER() OVER (PARTITION BY BPL.c_Bpartner_Location_ID Order by BPL.created) AS RN
+from c_bpartner BP
+Inner join um_BPartnerGroup BPG on BPG.c_Bpartner_id = BP.C_bpartner_id 
+Inner join c_Bpartner_Location BPL on BPL.C_Bpartner_id = BPG.c_Bpartner_id
+Inner Join M_priceList_version plv on bp.m_pricelist_id = plv.m_pricelist_id
+where bp.ad_org_id = 1000102
+and bp.UM_ISDMSCUSTOMER = 'Y'
+and bp.isactive = 'Y'
+and bpg.isactive = 'Y'
+and bpg.um_bpgrouptype = 'ART'
+and bpl.isactive = 'Y'
+and bpl.isshipto = 'Y' and bpl.isbillto='N'
+group by bp.value,BP.M_PriceList_id,BPL.UM_DMSLocationID,BPG.um_BpGroupType,BPL.created,BPL.C_Bpartner_id
+fetch first 1000 rows only;
+
