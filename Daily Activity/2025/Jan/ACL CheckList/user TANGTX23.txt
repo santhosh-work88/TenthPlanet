@@ -1,0 +1,45 @@
+Clean up Business Partner Payments and Invoices
+Shipment Confirmation
+NTA PO Print
+PO Matching Report Line
+Export DMS Reward
+Export Inventory DMS
+Invoice Print
+Consignment Order Print
+SKUContributionSchedule
+Physical Inventory Print
+Accrual FOC Repost
+Real Time Reporting Script Execution
+Import DMS BPartner Main
+UM_AccrualFOCCreate--> Reversal Accrual Monthly
+Payment Print--> Payment,Payment - AP,Payment Out AR,NTA Payment - AP,Cash Payment,Super Payment,PO Match Report
+UM_PartnerBankAccountReport--> Partner Bank Acount Report - ROW
+Delivery Note / Shipment Print
+Inventory Move Print
+Payment Print Header1
+Export DMS SO Status
+Document Value based Workflows
+Transport Manifest Report
+
+
+
+
+
+
+Physical Inventory
+Internal Use Inventory
+Physical Inventory Authorization
+Stocktake Adjustment
+Stocktake Adjustment Authorization
+Physical Inventory Gift
+Physical Inventory Authorization Gift
+
+
+
+Internal Transfer
+Sending Branch Transfer
+Metro Transfer
+Receiving Branch Transfer
+Internal Transfer Gift
+Receiving Branch Transfer Gift
+Sending Branch Transfer Gift
