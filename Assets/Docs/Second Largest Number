@@ -1,0 +1,27 @@
+Given an array of positive integers arr[], return the second largest element from the array. If the second largest element doesn't exist then return -1.
+
+Note: The second largest element should not be equal to the largest element.
+
+class Solution{
+
+public int getSecondLargest(int[] arr){
+	int maxNum = int.MIN_VALUE;
+	int minNum = int.MIN_VALUE;
+	
+	for(int num:arr){
+		if(num>maxNum){
+		minNum = maxNum;
+		maxNum = num;
+		}
+		else if(num>minNum && num<maxNum){
+		minNum = num;
+		}
+	}
+	if(minNum == int.MIN_VALUE){
+		return -1;
+	}
+	return minNum;
+}
+}
+
+[6,9,5,6,2,5]
